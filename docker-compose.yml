@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: supersoc-chatbot-app
+    restart: unless-stopped
+    ports:
+      - "8098:80"
+    environment:
+      DB_ADAPTER: Postgresql
+      DB_HOST: postgres
+      DB_SCHEMA: public
+      DB_NAME: supersoc_chatbot
+      DB_USER: supersociedades
+      DB_PASS: supersoc_secret_password_2024
+      DB_PORT: 5432
+      LUIS_ENDPOINT: "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/"
+      LUIS_APP_ID: "YOUR_LUIS_APP_ID"
+      LUIS_SUBSCRIPTION_KEY: "YOUR_LUIS_SUBSCRIPTION_KEY"
+      BOT_ADMIN_SECRET: "supersociedades*"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - supersoc-network
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: supersoc-chatbot-db
+    restart: unless-stopped
+    ports:
+      - "5438:5432"
+    environment:
+      POSTGRES_DB: supersoc_chatbot
+      POSTGRES_USER: supersociedades
+      POSTGRES_PASSWORD: supersoc_secret_password_2024
+    volumes:
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U supersociedades -d supersoc_chatbot"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - supersoc-network
+
+networks:
+  supersoc-network:
+    driver: bridge
+
+volumes:
+  pgdata:
+    driver: local

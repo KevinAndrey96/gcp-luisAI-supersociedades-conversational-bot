@@ -193,7 +193,10 @@ $di->set("co2", function () {
  *
  */
 $di->set("pusher", function () {
-    return new Pusher("YOUR_PUSHER_KEY", "YOUR_PUSHER_SECRET", "146862");
+    $key = getenv('PUSHER_KEY') ?: "YOUR_PUSHER_KEY";
+    $secret = getenv('PUSHER_SECRET') ?: "YOUR_PUSHER_SECRET";
+    $appId = getenv('PUSHER_APP_ID') ?: "146862";
+    return new Pusher($key, $secret, $appId);
 });
 
 /**

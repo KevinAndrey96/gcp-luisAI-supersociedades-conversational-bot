@@ -1,0 +1,21 @@
+# Composer dependencies and binaries
+/vendor/
+composer.phar
+
+# Environment & Credentials
+.env
+.env.*
+app/config/credentials.json
+!app/config/credentials.json.example
+
+# Temporary / editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs & caches
+*.log
+docker/data/

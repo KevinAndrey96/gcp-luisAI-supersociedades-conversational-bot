@@ -21,7 +21,7 @@ class ControllerBase extends Controller {
     const APPID_1 = "YOUR_LUIS_APP_ID_1"; //SuperSociedades
     const APPID_2 = "YOUR_LUIS_APP_ID_2"; //SuperSociedades1
     const ENDPOINTKEY_1 = "YOUR_LUIS_SUBSCRIPTION_KEY";
-    //const ENDPOINTKEY_2 = "YOUR_LUIS_SUBSCRIPTION_KEY"; //SuperSociedades1
+    const ENDPOINTKEY = "YOUR_LUIS_SUBSCRIPTION_KEY";
     const ENDPOINT = "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/";
     const TERM = "turn on the left light";
     const PASSWORD = "BOT_ADMIN_SECRET";

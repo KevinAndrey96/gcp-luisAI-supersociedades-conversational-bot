@@ -3,12 +3,12 @@
 
 return new \Phalcon\Config(array(
     'database' => array(
-         'schema'   => 'public',
-         'adapter'  => 'Postgresql',
-         'host'     => 'localhost',
-         'username' => 'supersociedades',
-         'password' => 'DB_SECURE_PASSWORD',
-         'dbname'   => 'supersoc_chatbot',
+         'schema'   => getenv('DB_SCHEMA') ?: 'public',
+         'adapter'  => getenv('DB_ADAPTER') ?: 'Postgresql',
+         'host'     => getenv('DB_HOST') ?: 'localhost',
+         'username' => getenv('DB_USER') ?: 'supersociedades',
+         'password' => getenv('DB_PASS') ?: 'DB_SECURE_PASSWORD',
+         'dbname'   => getenv('DB_NAME') ?: 'supersoc_chatbot',
     ),
 
     'application' => array(
