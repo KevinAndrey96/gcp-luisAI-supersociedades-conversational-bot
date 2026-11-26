@@ -136,7 +136,7 @@ A core design principle of this platform is its resilience against out-of-distri
 ## Repository Structure
 
 ```
-gcp-luisAI-supersociedades-conversational-bot/
+php-luis-ai-supersociedades-conversational-bot/
 ├── app/
 │   ├── config/
 │   │   ├── config.php                      # Dynamic environment configuration
@@ -204,8 +204,8 @@ gcp-luisAI-supersociedades-conversational-bot/
 ### 1. Launch the Stack
 ```bash
 # Clone the repository
-git clone git@github.com-personal:KevinAndrey96/gcp-luisAI-supersociedades-conversational-bot.git
-cd gcp-luisAI-supersociedades-conversational-bot
+git clone https://github.com/KevinAndrey96/php-luis-ai-supersociedades-conversational-bot.git
+cd php-luis-ai-supersociedades-conversational-bot
 
 # Start PostgreSQL and the PHP application
 docker compose up -d
